@@ -275,4 +275,3 @@ arma::mat posterior_update(arma::mat edge, arma::vec edgelength,int Nnode,arma::
 
 }
 
-

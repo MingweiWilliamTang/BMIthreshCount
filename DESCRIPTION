@@ -1,11 +1,13 @@
 Package: BMIthreshCount
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Counting label transitions in phylogenetic stochastic mapping
 Version: 0.1.0
-Author: Who wrote it
+Authors@R: c(
+    person("Mingwei", "Tang", email = "mingwt@uw.edu", role = "cre"),
+    person("Vladimir", "Minin", email = "vminin@uw.edu", role = "aut"))
 Maintainer: Who to complain to <yourfault@somewhere.net>
 Description: More about what it does (maybe more than one line)
 License: What license is it under?
 LazyData: TRUE
-LinkingTo: Rcpp
-Imports: Rcpp
+LinkingTo: Rcpp,RcppArmadillo
+Imports: Rcpp,RcppArmadillo
