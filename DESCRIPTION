@@ -10,4 +10,6 @@ Description: More about what it does (maybe more than one line)
 License: What license is it under?
 LazyData: TRUE
 LinkingTo: Rcpp,RcppArmadillo
-Imports: Rcpp,RcppArmadillo
+Imports:
+    Rcpp,RcppArmadillo
+RoxygenNote: 5.0.1
