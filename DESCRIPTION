@@ -5,8 +5,8 @@ Version: 0.1.0
 Authors@R: c(
     person("Mingwei", "Tang", email = "mingwt@uw.edu", role = "cre"),
     person("Vladimir", "Minin", email = "vminin@uw.edu", role = "aut"))
-Maintainer: Who to complain to <yourfault@somewhere.net>
-Description: More about what it does (maybe more than one line)
+Maintainer: Mingwei Tang<mingwt@uw.edu>
+Description: Statistical inference on counting label transition in Evolution using Brownian motion threshold model
 License: What license is it under?
 LazyData: TRUE
 LinkingTo: Rcpp,RcppArmadillo
