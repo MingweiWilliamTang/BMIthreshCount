@@ -1,3 +1,3 @@
 # BMIthreshCount
 
-BMIthreshCount is a R package targeted at counting and inferring binary trait transitions in evolution. 
+BMIthreshCount is a R package targeting at counting and inferring binary trait transitions in evolution. 
