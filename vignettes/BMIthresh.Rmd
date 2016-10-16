@@ -19,20 +19,26 @@ vignette: >
 library(BMIthreshCount)
 ```
 ## Brownian motion interval crossing model
-# simulate a Brown motion path and plot
+
 ```{r,figure.show='hold'}
 set.seed(223)
 # simulate a Brown motion path and plot
-OUpath(1,1,1000,0,1,pl = T)
+path <- OUbridge(1,-1,1,1000,0,0,1,T)
+# counting how many upcrossing and downcrossing and find the crossing points
+crossing(path,0,0.2,0,1)
 ```
-## Styles
+Also, given a starting point x0 and an ending point xt, the posterior probablity of crossing number $Pr(N=n,L_0=l|X_0=x_0,X_t=x_t)$ can be calculated
+```{r}
+crossing_brownbridge(1,-1,1,1,0.1,T,F)
+```
+## Calculate prior and posterior probility for crossing number on phylogenetic tree
 
-The `html_vignette` template includes a basic CSS theme. To override this theme you can specify your own CSS in the document metadata as follows:
-
-    output:
-      rmarkdown::html_vignette:
-        css: mystyles.css
-
+```{r}
+set.seed(518)
+library(geiger)
+phytree <- rtree(10)
+plot(phytree)
+```
 ## Figures
 
 The figure sizes have been customised so that you can easily put two images side-by-side.

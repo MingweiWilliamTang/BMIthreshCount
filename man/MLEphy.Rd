@@ -2,7 +2,7 @@
 % Please edit documentation in R/MLEphy.R
 \name{MLEphy}
 \alias{MLEphy}
-\title{Calculate the two-state CTMC likelihood}
+\title{package}
 \usage{
 MLEphy(par, data)
 }
@@ -15,6 +15,9 @@ MLEphy(par, data)
 CTMC likelihood
 }
 \description{
+non
+}
+\details{
 Calculate the two-state CTMC likelihood
 }
 

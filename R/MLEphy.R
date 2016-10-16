@@ -3,6 +3,7 @@
 #' @param par Positive numeric vector for the transition rates
 #' @param data List phy for phylogenetic tree, tip01 by binary states encoded in 0,1
 #' @return CTMC likelihood
+#' @export
 #'
 MLEphy=function(par,data){
   data$phy=reorder(data$phy,order="pr")
@@ -16,6 +17,7 @@ MLEphy=function(par,data){
 #' @param par Numeric vector for the log transition rates
 #' @param data List phy for phylogenetic tree, tip01 by binary states encoded in 0,1
 #' @return CTMC likelihood
+#' @export
 
 MLEphy.log=function(par,data){
   data$phy=reorder(data$phy,order="pr")
@@ -55,8 +57,6 @@ CTMCprob2=function(data,maxnum=10){
 }
 
 
-# experiment
-###########################
 
 ckprpostbf=function(phy,d,epsilon,root.prior,nsize=5000,k)
 {
