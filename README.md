@@ -22,4 +22,4 @@ Load the package and open the package vignette:
  ```
  There will be examples on some of the key functions in `BMIthreshCount` package. Also, if you have any question of how to use some function, use `help(functionname)`. 
  
- Have fun with 'BMIthreshCount'
+ Have fun with `BMIthreshCount`
