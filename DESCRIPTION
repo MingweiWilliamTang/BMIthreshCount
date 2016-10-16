@@ -10,7 +10,7 @@ Description: Statistical inference on counting label transition in Evolution usi
 License: What license is it under?
 LazyData: TRUE
 LinkingTo: Rcpp,RcppArmadillo
-Depends:R (>= 3.1.0), RcppArmadillo, Rcpp (>= 0.11.5), optimx, indorigin
+Depends: R (>= 3.1.0), RcppArmadillo, Rcpp (>= 0.11.5), optimx, indorigin
 Imports:
   Rcpp,
   RcppArmadillo,
@@ -20,5 +20,8 @@ Suggests:
   geiger,
   phytools,
   doParallel,
-  snow
+  snow,
+    knitr,
+    rmarkdown
 RoxygenNote: 5.0.1
+VignetteBuilder: knitr
