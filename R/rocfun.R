@@ -1,13 +1,13 @@
 # roc functions
-plot.roc=function(s2,ntrial,N_study=NULL){
+plot.roc=function(s2,ntrial,N_study=NULL,cex=1,pch=3){
   # plot roc curve of the experiment
   # and return the auc value
-  par(mar=c(2,2,1,0))
+  par(mar=c(2,2,2,0)+1)
   T_total = s2$Total[1]
   F_total = ntrial - T_total
-  plot(c(1,s2$count[,2]/F_total),c(1,s2$count[,1]/T_total),type="l",col="red",lwd = 2,main=paste('N_study=',as.character(N_study)),
-       xlab='False positive rate',ylab='True positive rate',xlim=c(0,1),ylim=c(0,1),mgp=c(1.2,0.3,0))
-  points(s2$count[,2]/F_total,s2$count[,1]/T_total,pch = 20)
+  plot(c(1,s2$count[,2]/F_total),c(1,s2$count[,1]/T_total),type="l",col="black",lwd = 2,main=paste('N_study=',as.character(N_study)),
+       xlab='False positive rate',ylab='True positive rate',xlim=c(0,1),ylim=c(0,1),mgp=c(1.2,0.3,0),cex.lab=1.2, cex.axis=1.2)
+  points(s2$count[,2]/F_total,s2$count[,1]/T_total,pch = pch,cex = cex)
   lines(c(0,1),c(0,1),lty=2)
   # return auc value
   l = length(s2$count[,1])+2
@@ -18,13 +18,13 @@ plot.roc=function(s2,ntrial,N_study=NULL){
   return(auc)
 }
 
-lines.roc=function(s2,ntrial,color="blue"){
+lines.roc=function(s2,ntrial,color="black",lty=2,pch=2,cex=1){
   # plot roc curve of the experiment
   # and return the auc value
   T_total = s2$Total[1]
   F_total = ntrial - T_total
-  lines(c(1,s2$count[,2]/F_total),c(1,s2$count[,1]/T_total),type="l",col=color,lwd=2)
-  points(s2$count[,2]/F_total,s2$count[,1]/T_total,pch = 20)
+  lines(c(1,s2$count[,2]/F_total),c(1,s2$count[,1]/T_total),type="l",col=color,lwd=2,lty=lty)
+  points(s2$count[,2]/F_total,s2$count[,1]/T_total,pch = pch,cex=cex)
   lines(c(0,1),c(0,1),lty=2)
   # return auc value
   l = length(s2$count[,1])+2

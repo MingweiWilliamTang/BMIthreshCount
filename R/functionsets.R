@@ -188,12 +188,13 @@ getprs=function(phy,epsilon,root.prior,k=10){
   cumpr=sapply(c(0:k),function(x) return(mean(bb<=x)) )
   pr=sapply(c(0:k),function(x) return(mean(bb==x)) )
   par(mfrow=c(2,1))
-  par(mar=c(2,2.2,0.5,0))
+  par(mar=c(2.3,2.5,2,0))
   par(oma=c(0,0,0,0))
   barplot(pr,width = rep(0.5,k),space=1.2,names.arg=as.character(c(0:k)),main="probability mass plot",xlab="upcross",
-          ylab="prob",mgp=c(1.2,0.3,0),ylim=c(0,1))
+          ylab="prob",mgp=c(1.2,0.3,0),ylim=c(0,1),cex.axis=1.5,cex.names = 1.5,cex.lab=1.5)
+  par(mar=c(2.3,2.5,1,0))
   barplot(c(cumpr),width = rep(0.5,k),space=1.2,names.arg=as.character(c(0:k)),main="cummulative probability plot",
-          xlab="upcross",ylab="prob",mgp=c(1.2,0.3,0),ylim=c(0,1))
+          xlab="upcross",ylab="prob",mgp=c(1.2,0.3,0),ylim=c(0,1),cex.axis = 1.5,cex.names = 1.5,cex.lab=1.5)
 }
 
 

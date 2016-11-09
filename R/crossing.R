@@ -134,7 +134,7 @@ OUbridge=function(x0,xT,TT,n,theta,mu,sigma,pl=F){
   Zt=c(x0,Zt)
   if(pl==T){
     grid=c(0,grid)
-    plot(grid,Zt,type="l",ylab="Liability Xt",xlab="time",ylim=c(min(Zt)-0.3,max(Zt)+0.1),mgp=c(2.5,1,0.5),cex.lab=1.5,las=-0.5)
+    plot(grid,Zt,type="l",ylab="Liability Xt",xlab="time",ylim=c(min(Zt)-0.3,max(Zt)+0.1),mgp=c(2.5,1,0.5),cex.lab=2,las=-0.5,cex.axis=1.5)
     #abline(v=epsilon,col="red",lty=2)
     #abline(v=-epsilon,col="red",lty=2)
   }
