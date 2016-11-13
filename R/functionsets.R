@@ -256,7 +256,7 @@ CTMC_BM_Connect = function(phy.data,pr_count_mx,grid,alpha,c1=0.75,c2=0.7,c3=1.2
   if(sum(lable)==0){return(0)
   }else{
     post_grid = grid[lable,]
-
+    print(post_grid)
     BMpost_cross=apply(post_grid,1,function(x) return(brownian_crossing_post3(phy.data$phy,phy.data$tip01,
                                                                               0,x[1],c(x[2],x[2]/10),ngen=30000,burnin=10000,thin=5,less=F)))
 
@@ -524,4 +524,40 @@ BM_positive_negative_rate = function(phy,ntrial,x.root,eps,level,N_study){
   return(list(count=count,Total=T_total))
 }
 
+#' Use calibrated Brownian motion method on testing the hypothesis of transition numbers
+#'
+#' @param phy a phylogenetic tree object
+#' @param tipvalue the values of the tip node
+#' @param grid the grid set for testing hypothesis
+#' @param c1
+#' @param c2
+#' @param c3
+#'
+#' @return The bayes factor output from the grid
+
+BM_calibrated_test = function(phy,tipvalue,grid,alpha,c1=0.75,c2=0.7,c3=1.2){
+  #   print(paste('finish ',i))
+  # simulate ntrial sets of tip values
+  # in each trail we simulate the binary values on the tip of the tree
+  # The rate is calculated by averaging the results over trails
+  latent_data = brown_tree_prior_data(phy,up=T,nsize=10000,k=0)
+  pr_count_mx=brown_tree_prior_grid(phy,grid,latent_data,k=0)
+
+  listmx=0
+  bf_vec = TRUE
+  phy.data = list(phy=phy,tip01=tipvalue)
+  while(!(is.list(listmx)) || is.logical(bf_vec) ){
+
+    # listmx=mx_counts(phy.data,latent_data,alpha,grid)
+    listmx = CTMC_BM_Connect(phy.data,pr_count_mx,grid,alpha,c1,c2,c3)
+    if(!(is.list(listmx))){
+      next
+    }else{
+      bf_vec = list(test0=bf_v(listmx,0),test1 = bf_v(listmx,1), test2 = bf_v(listmx,2), test3 = bf_v(listmx,3))
+    }
+  }
+  # print(bf_vec)
+  return(bf_vec)
+}
 print("source complete")
+

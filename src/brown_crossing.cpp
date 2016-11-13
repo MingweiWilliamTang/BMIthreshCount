@@ -157,7 +157,7 @@ arma::mat brown_tree_prior_node_cpp(arma::mat edge,arma::vec edgelength,int Nnod
   return(res);
 }
 
-
+//[[Rcpp::export()]]
 arma::vec trnorm0(double mu,double sigma,int d,int nsize=1)
 {
   //sample from truncated normal distribution on [a,b]
