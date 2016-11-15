@@ -21,6 +21,10 @@ brown_tree_prior_node_cpp <- function(edge, edgelength, Nnode, rootprior, nsize)
     .Call('BMIthreshCount_brown_tree_prior_node_cpp', PACKAGE = 'BMIthreshCount', edge, edgelength, Nnode, rootprior, nsize)
 }
 
+trnorm0 <- function(mu, sigma, d, nsize = 1L) {
+    .Call('BMIthreshCount_trnorm0', PACKAGE = 'BMIthreshCount', mu, sigma, d, nsize)
+}
+
 getneighbor_cpp <- function(edge, edgelength, Nnode) {
     .Call('BMIthreshCount_getneighbor_cpp', PACKAGE = 'BMIthreshCount', edge, edgelength, Nnode)
 }

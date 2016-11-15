@@ -1,4 +1,5 @@
 //@copyright Mingwei
+/*
 #include<RcppArmadilloExtensions/sample.h>
 #include<RcppArmadillo.h>
 //[[Rcpp::depends(RcppArmadillo)]]
@@ -7,7 +8,10 @@
 #include<math.h>
 using namespace Rcpp;
 using namespace arma;
-# define pi           3.14159265358979323846
+ */
+
+#include "twostates.h"
+#define pi           3.14159265358979323846
 //[[Rcpp::export()]]
 double crossing_brownbridge(double x0,double xt, double t ,int ncross,
                             double epsilon ,bool up= true ,bool counditional = true)
@@ -214,6 +218,7 @@ arma::mat getneighbor_cpp(arma::mat edge,arma::vec edgelength,int Nnode)
 arma::mat posterior_update(arma::mat edge, arma::vec edgelength,int Nnode,arma::vec d,
                            double thed,arma::vec rootprior, int ngen, int burnin, int thin = 1)
 {
+  Rcpp::checkUserInterrupt();
   int N,p,j;
   double v1,v2,v3,z1,z2,z3,mu,sigma2;
   //  arma::mat nbor,nedge;

@@ -90,6 +90,20 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// trnorm0
+arma::vec trnorm0(double mu, double sigma, int d, int nsize);
+RcppExport SEXP BMIthreshCount_trnorm0(SEXP muSEXP, SEXP sigmaSEXP, SEXP dSEXP, SEXP nsizeSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< double >::type mu(muSEXP);
+    Rcpp::traits::input_parameter< double >::type sigma(sigmaSEXP);
+    Rcpp::traits::input_parameter< int >::type d(dSEXP);
+    Rcpp::traits::input_parameter< int >::type nsize(nsizeSEXP);
+    rcpp_result_gen = Rcpp::wrap(trnorm0(mu, sigma, d, nsize));
+    return rcpp_result_gen;
+END_RCPP
+}
 // getneighbor_cpp
 arma::mat getneighbor_cpp(arma::mat edge, arma::vec edgelength, int Nnode);
 RcppExport SEXP BMIthreshCount_getneighbor_cpp(SEXP edgeSEXP, SEXP edgelengthSEXP, SEXP NnodeSEXP) {
