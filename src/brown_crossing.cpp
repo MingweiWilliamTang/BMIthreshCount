@@ -162,17 +162,27 @@ arma::mat brown_tree_prior_node_cpp(arma::mat edge,arma::vec edgelength,int Nnod
 }
 
 //[[Rcpp::export()]]
-arma::vec trnorm0(double mu,double sigma,int d,int nsize=1)
+arma::vec trnorm0(double mu,double sigma,double d,double epsilon,int nsize=1)
 {
   //sample from truncated normal distribution on [a,b]
   arma::vec res(nsize);
-  double u,alpha=R::pnorm((0-mu)/sigma,0,1,1,0);
+  double u,alpha1=R::pnorm((-epsilon-mu)/sigma,0,1,1,0),alpha2=R::pnorm((epsilon-mu)/sigma,0,1,1,0);
+
 
   for(int i=0;i<nsize;i++)
   {
     u = R::runif(0,1);
-    if(d ==1) res(i) = R::qnorm(alpha + (1-alpha)*u ,0,1,1,0)*sigma+mu;
-    else res(i) = R::qnorm(alpha*u,0,1,1,0)*sigma+mu;
+
+    if(d ==1){
+      res(i) = R::qnorm(alpha2 + (1-alpha2)*u ,0,1,1,0) * sigma + mu;
+    }else if(d == 0){
+      res(i) = R::qnorm(alpha1*u,0,1,1,0)*sigma+mu;
+    }else{
+      res(i) = R::qnorm(alpha1 + (alpha2-alpha1)*u ,0,1,1,0) * sigma + mu;
+    }
+
+
+
   }
   return(res);
 }
@@ -216,7 +226,7 @@ arma::mat getneighbor_cpp(arma::mat edge,arma::vec edgelength,int Nnode)
 //[[Rcpp::export()]]
 
 arma::mat posterior_update(arma::mat edge, arma::vec edgelength,int Nnode,arma::vec d,
-                           double thed,arma::vec rootprior, int ngen, int burnin, int thin = 1)
+                           double thed,double epsilon,arma::vec rootprior, int ngen, int burnin, int thin = 1)
 {
   Rcpp::checkUserInterrupt();
   int N,p,j;
@@ -267,7 +277,7 @@ arma::mat posterior_update(arma::mat edge, arma::vec edgelength,int Nnode,arma::
     {
       mu=batch(nbor(0,j)-1);
       sigma2=nedge(0,j);
-      batch(j) = trnorm0(mu,sqrt(sigma2),d(j),1)(0);
+      batch(j) = trnorm0(mu,sqrt(sigma2),d(j),epsilon,1)(0);
     }
     if(!(i<burnin||i%thin!=0))
     {
