@@ -91,16 +91,17 @@ BEGIN_RCPP
 END_RCPP
 }
 // trnorm0
-arma::vec trnorm0(double mu, double sigma, int d, int nsize);
-RcppExport SEXP BMIthreshCount_trnorm0(SEXP muSEXP, SEXP sigmaSEXP, SEXP dSEXP, SEXP nsizeSEXP) {
+arma::vec trnorm0(double mu, double sigma, double d, double epsilon, int nsize);
+RcppExport SEXP BMIthreshCount_trnorm0(SEXP muSEXP, SEXP sigmaSEXP, SEXP dSEXP, SEXP epsilonSEXP, SEXP nsizeSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< double >::type mu(muSEXP);
     Rcpp::traits::input_parameter< double >::type sigma(sigmaSEXP);
-    Rcpp::traits::input_parameter< int >::type d(dSEXP);
+    Rcpp::traits::input_parameter< double >::type d(dSEXP);
+    Rcpp::traits::input_parameter< double >::type epsilon(epsilonSEXP);
     Rcpp::traits::input_parameter< int >::type nsize(nsizeSEXP);
-    rcpp_result_gen = Rcpp::wrap(trnorm0(mu, sigma, d, nsize));
+    rcpp_result_gen = Rcpp::wrap(trnorm0(mu, sigma, d, epsilon, nsize));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -118,8 +119,8 @@ BEGIN_RCPP
 END_RCPP
 }
 // posterior_update
-arma::mat posterior_update(arma::mat edge, arma::vec edgelength, int Nnode, arma::vec d, double thed, arma::vec rootprior, int ngen, int burnin, int thin);
-RcppExport SEXP BMIthreshCount_posterior_update(SEXP edgeSEXP, SEXP edgelengthSEXP, SEXP NnodeSEXP, SEXP dSEXP, SEXP thedSEXP, SEXP rootpriorSEXP, SEXP ngenSEXP, SEXP burninSEXP, SEXP thinSEXP) {
+arma::mat posterior_update(arma::mat edge, arma::vec edgelength, int Nnode, arma::vec d, double thed, double epsilon, arma::vec rootprior, int ngen, int burnin, int thin);
+RcppExport SEXP BMIthreshCount_posterior_update(SEXP edgeSEXP, SEXP edgelengthSEXP, SEXP NnodeSEXP, SEXP dSEXP, SEXP thedSEXP, SEXP epsilonSEXP, SEXP rootpriorSEXP, SEXP ngenSEXP, SEXP burninSEXP, SEXP thinSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -128,11 +129,12 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< int >::type Nnode(NnodeSEXP);
     Rcpp::traits::input_parameter< arma::vec >::type d(dSEXP);
     Rcpp::traits::input_parameter< double >::type thed(thedSEXP);
+    Rcpp::traits::input_parameter< double >::type epsilon(epsilonSEXP);
     Rcpp::traits::input_parameter< arma::vec >::type rootprior(rootpriorSEXP);
     Rcpp::traits::input_parameter< int >::type ngen(ngenSEXP);
     Rcpp::traits::input_parameter< int >::type burnin(burninSEXP);
     Rcpp::traits::input_parameter< int >::type thin(thinSEXP);
-    rcpp_result_gen = Rcpp::wrap(posterior_update(edge, edgelength, Nnode, d, thed, rootprior, ngen, burnin, thin));
+    rcpp_result_gen = Rcpp::wrap(posterior_update(edge, edgelength, Nnode, d, thed, epsilon, rootprior, ngen, burnin, thin));
     return rcpp_result_gen;
 END_RCPP
 }

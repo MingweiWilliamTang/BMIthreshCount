@@ -219,8 +219,8 @@ tree.plot=function(phy.data){
 Browntip_simu=function(phy,epsilon,root.prior){
   n=phy$Nnode+1
   data=brown_tree_prior_node(phy,root.prior)
-  tip=ifelse(data[1:n]>0,"B","A")
-  tip01=ifelse(tip=="B",1,0)
+  tip=ifelse(data[1:n]>epsilon,"B",ifelse(data[1:n]< -epsilon,"A","C"))
+  tip01=ifelse(tip=="B",1,ifelse(tip == "A",0,0.5))
   od=order(as.numeric(gsub("t", "", phy$tip.label)))
   names(tip01) = phy$tip.label[od]
   names(tip) = phy$tip.label[od]

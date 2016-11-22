@@ -21,16 +21,16 @@ brown_tree_prior_node_cpp <- function(edge, edgelength, Nnode, rootprior, nsize)
     .Call('BMIthreshCount_brown_tree_prior_node_cpp', PACKAGE = 'BMIthreshCount', edge, edgelength, Nnode, rootprior, nsize)
 }
 
-trnorm0 <- function(mu, sigma, d, nsize = 1L) {
-    .Call('BMIthreshCount_trnorm0', PACKAGE = 'BMIthreshCount', mu, sigma, d, nsize)
+trnorm0 <- function(mu, sigma, d, epsilon, nsize = 1L) {
+    .Call('BMIthreshCount_trnorm0', PACKAGE = 'BMIthreshCount', mu, sigma, d, epsilon, nsize)
 }
 
 getneighbor_cpp <- function(edge, edgelength, Nnode) {
     .Call('BMIthreshCount_getneighbor_cpp', PACKAGE = 'BMIthreshCount', edge, edgelength, Nnode)
 }
 
-posterior_update <- function(edge, edgelength, Nnode, d, thed, rootprior, ngen, burnin, thin = 1L) {
-    .Call('BMIthreshCount_posterior_update', PACKAGE = 'BMIthreshCount', edge, edgelength, Nnode, d, thed, rootprior, ngen, burnin, thin)
+posterior_update <- function(edge, edgelength, Nnode, d, thed, epsilon, rootprior, ngen, burnin, thin = 1L) {
+    .Call('BMIthreshCount_posterior_update', PACKAGE = 'BMIthreshCount', edge, edgelength, Nnode, d, thed, epsilon, rootprior, ngen, burnin, thin)
 }
 
 twoStateRateMatrix <- function(lambda_01, lambda_10) {
