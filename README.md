@@ -5,7 +5,7 @@ BMIthreshCount is a R package targeting at counting and inferring binary trait t
 ### installation 
 If you don't have `devtools` package install, first install `devtools` package by running
 ```
-install_github("vnminin/indorigin",build_vignettes=TRUE) 
+install_github("vnminin/indorigin") 
 ```
 After having  `devtools` installed, library `devtool` and install the package via github
 ```
